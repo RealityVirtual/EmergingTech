@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+<div style="position: fixed; z-index: 10000; color: white; width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <p>Use right/left arrow to rotate the ship. Drag the mouse to look around. Click on yellow boxes to expand content.</p>
+</div>
+
+    <a-scene background="color: #000">
+      <!-- Environment -->
+      <a-entity environment="preset: starry; groundColor: #445; grid: cross"></a-entity>
+
+      <!-- Parent Entity -->
+      <a-entity id="rotating-group" rotation="0 0 0" position="-37 0 10">
+        <!-- GLTF Model -->
+        <a-gltf-model 
+          id="rotating-model" 
+          src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/scene.glb?v=1736779445370" 
+          position="0 -30 0"
+          scale="7 7 7">
+        </a-gltf-model>
+
+        <!-- Box 1 -->
+        <a-box id="box1" position="-0.3 6.2 -29" rotation="0 0 0" scale="7 7 0.1" color="#ffdd00" class="clickable">
+          <a-text value="Main Engines" position="0 0.8 0" rotation="0 180 0" align="center" color="white"></a-text>
+        </a-box>
+
+        <!-- Box 2 -->
+        <a-box id="box2" position="0.051 15.857 10.381" rotation="0 0 0" scale="5.9 3 3" color="#ffdd00" class="clickable">
+          <a-text value="Flight Deck (Cockpit)" position="0 1.5 0" rotation="0 -90 0" align="center" color="white"></a-text>
+          <a-text value="Flight Deck (Cockpit)" position="0 1.5 0" rotation="0 90 0" align="center" color="white"></a-text>
+        </a-box>
+
+        <!-- Box 3 -->
+        <a-box id="box3" position="-0.012 15.486 -3.973" rotation="0 90 0" scale="4 4 7" color="#ffdd00" class="clickable">
+          <a-text value="Avionics System" position="0 1.133 0" rotation="0 180 0" align="center" color="white"></a-text>
+          <a-text value="Avionics System" position="0 1.133 0" rotation="0 0 0" align="center" color="white"></a-text>
+        </a-box>
+
+        <!-- Box 4 -->
+        <a-box id="box4" position="-0.37 10.2 -0.92" rotation="0 -90 0" scale="4 4 9" color="#ffdd00" class="clickable">
+          <a-text value="Thermal Protection System (Underside)" position="0 -0.4 -0.62" rotation="0 180 0" align="center" color="white"></a-text>
+          <a-text value="Thermal Protection System (Underside)" position="0 -0.4 0.54" rotation="0 0 0" align="center" color="white"></a-text>
+
+        </a-box>
+      </a-entity>
+
+      <!-- Ambient Light -->
+      <a-entity light="type: ambient; color: #ffd699; intensity: 0.2"></a-entity>
+
+      <!-- Directional Light -->
+      <a-entity light="type: directional; color: #ffd699; intensity: 0.5" position="-45 -30 -300" rotation="0 -8.5 0"></a-entity>
+
+      <!-- Spotlight -->
+      <a-entity light="type: spot; color: #ffd699; intensity: 1.5; angle: 45; penumbra: 0.5; decay: 2; distance: 100" position="-45 10 20" rotation="-45 0 0"></a-entity>
+
+      <!-- Additional Fill Light -->
+      <a-entity light="type: point; color: #ffd699; intensity: 1; distance: 60" position="-50 -30 30"></a-entity>
+
+      <!-- Add a cursor -->
+      <a-entity position="0 1.6 10" rotation="0 90 0">>
+        <a-camera wasd-controls-enabled="false">
+          <a-cursor color="yellow"></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      // Handle box clicks
+      function expandBox(boxId) {
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100%";
+        overlay.style.height = "100%";
+        overlay.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+        overlay.style.zIndex = "1000";
+
+        const boxText = {
+          box1: "Software controls engine ignition, fuel management, and thrust adjustment. Engineers write precise, fail-safe codes for engine performance under extreme conditions. Your role could include developing simulations to test engine behavior, optimizing code for real-time adjustments, and improving efficiency during launch and re-entry phases.",
+          box2: "Software engineers develop navigation, control, and communication systems to ensure mission safety. These systems include real-time telemetry, onboard diagnostics, and fault detection. Engineers also design user-friendly interfaces for astronauts to monitor and interact with systems like autopilot and guidance controls. Your contributions would focus on ensuring system reliability under various conditions, simulating mission scenarios for validation, and continuously updating flight software to address emerging challenges.",
+          box3: "This system handles data processing and communication between shuttle components. Software engineers ensure that sensors, processors, and actuators work cohesively. Your job would involve programming to collect, process, and relay sensor data, ensuring accurate decision-making by onboard systems, and preventing failures through redundancy.",
+          box4: "This system ensures safe re-entry by managing heat distribution. Software contributions include monitoring temperature sensors and predicting stress points in the shield. Engineers would focus on creating predictive models, integrating real-time monitoring systems, and testing scenarios for shield durability."
+        }[boxId];
+
+        overlay.innerHTML = `
+          <div style="color: white; font-size: 20px; text-align: center; margin-top: 20%; width: 60%; margin-left: 20%;">
+            ${boxText}
+            <br>
+            <button onclick="document.body.removeChild(document.getElementById('overlay'));" style="margin-top: 20px; padding: 10px 20px;">Close</button>
+          </div>
+        `;
+        document.body.appendChild(overlay);
+      }
+
+      document.querySelectorAll(".clickable").forEach(box => {
+        box.addEventListener("click", () => expandBox(box.id));
+      });
+
+      // Handle rotation
+      let rotateInterval;
+      const rotationSpeed = 1; // Rotation speed per frame
+
+      document.addEventListener("keydown", (event) => {
+        const group = document.querySelector("#rotating-group");
+
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          if (rotateInterval) return; // Prevent multiple intervals
+          rotateInterval = setInterval(() => {
+            const rotation = group.getAttribute("rotation");
+            rotation.y += event.key === "ArrowRight" ? rotationSpeed : -rotationSpeed;
+            group.setAttribute("rotation", `${rotation.x} ${rotation.y} ${rotation.z}`);
+          }, 16); // Rotate every ~16ms (about 60 FPS)
+        }
+      });
+
+      document.addEventListener("keyup", (event) => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          clearInterval(rotateInterval); // Stop rotation when key is released
+          rotateInterval = null;
+        }
+      });
+    </script>
+  </body>
+</html>
