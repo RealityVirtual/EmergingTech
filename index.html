@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emerging Jobs in Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Geist Mono", monospace;
+        overflow-x: hidden;
+      }
+
+      .header {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/360_F_207154340_wLIJus4m3SBl5sAQmpqN3Um7REnUhskU.jpg?v=1736993938135")
+            center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 4rem;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .btn {
+        border-radius: 6px;
+        padding: 15px;
+        font-size: 20px;
+        transition: all 0.5s ease;
+        box-shadow: 5px 5px 20px 1px #575656;
+        border: none;
+        cursor: pointer;
+        font-family: "Geist Mono", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+      }
+
+      .btn:hover {
+        transition: all 0.5s ease;
+        padding: 20px;
+      }
+
+      section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .ai-section,
+      .space-section {
+        color: #ffffff;
+      }
+
+      .ai-section {
+        background: linear-gradient(135deg, #001f3f, #1a2a6c);
+      }
+
+      .space-section {
+        position: relative;
+        overflow: hidden;
+        background: black;
+        will-change: transform;
+      }
+
+      .gold-divider {
+        height: 10px;
+        width: 100%;
+        background: linear-gradient(to right, #d4af37, #ffd700, #d4af37);
+        margin: 0;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .content img {
+        max-width: 40%;
+        height: auto;
+        margin-left: 30px;
+        border-radius: 10px;
+      }
+
+      .content-text {
+        flex: 1;
+        padding: 20px;
+        margin-left: -20%;
+        text-align: left;
+      }
+
+      .content-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .content-text p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        font-family: "Geist Mono", monospace;
+      }
+
+      /* Alternating layout */
+      .reverse {
+        flex-direction: row-reverse;
+      }
+
+      /* Stars Styling */
+      @keyframes moveStars {
+        0% {
+          transform: translateZ(1000px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateZ(-100px);
+          opacity: 0;
+        }
+      }
+
+      .stars-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        pointer-events: none;
+        will-change: transform, opacity;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background-color: white;
+        border-radius: 50%;
+        animation: moveStars 5s linear infinite;
+      }
+
+      .star:nth-child(odd) {
+        animation-duration: 6s;
+      }
+
+      .star:nth-child(even) {
+        animation-duration: 8s;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Emerging Jobs in Tech</h1>
+      <p style="color: white">A website created by Aidan Young</p>
+      <br />
+      <div class="button-container">
+        <a href="#startAI"><button class="btn">Jobs in AI</button></a>
+        <a href="#startSpace"
+          ><button class="btn">Jobs in Space Development</button></a
+        >
+      </div>
+    </header>
+
+    <div class="gold-divider"></div>
+
+    <section class="ai-section" id="startAI">
+      <div class="content">
+        <div class="content-text">
+          <h2>The Rise of AI and Its Impacts</h2>
+          <p>
+            Artificial Intelligence has become a transformative force across industries, reshaping societies, cultures, and economies globally. From healthcare to finance, transportation to entertainment, AI is revolutionizing the way tasks are performed and is continuing to develop increasingly faster. AI systems can enhance medical diagnostics, improve predictive analytics in business, and enable autonomous vehicles. As these technologies grow in prominence, the demand for skilled AI engineers surges, creating opportunities for prospects. However, this rapid rise raises societal questions, such as potential job displacement, privacy concerns, and ethical dilemmas surrounding AI use. Culturally, AI's implementation has challenged some traditional practices, sparking debates on its role in preserving or disrupting various cultural identities. Economically, AI enhances the productivity and innovation of workers while requiring large-scale reskilling of the workforce to adapt to this new technology. This evolution demonstrates the vital role developers will play in guiding AI towards ethical paths in the future.
+
+          </p>
+          <br>
+          <p>
+            See other <a href="https://becominganaiengineer.glitch.me/sources.html" target="_blank" style="color: #30d0db;"> sources</a> to further develop the skills required for this AI centered pathway.
+          </p>
+        </div>
+        <img
+          src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/Different-types-of-AI-applications.png?v=1737085011754"
+          alt="Applications of AI"
+        />
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section class="ai-section">
+      <div class="content reverse">
+        <img src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/AI-Prompt-Engineer-Career-Path.webp?v=1738180848249" alt="Jobs in AI" />
+        <div class="content-text">
+          <h2>Academic Pathway for Aspiring AI Developers</h2>
+          <p>
+            To become an AI developer as a student in Ottawa, students should prioritize a solid academic foundation in computer science, mathematics, and data science. Institutions such as the University of Ottawa, Carleton University, and Algonquin College offer tailored programs to prepare students for this contemporary field. At the University of Ottawa, for example, students can pursue a Bachelor of Computer Science, focusing on machine learning and AI electives. Similarly, Carleton University’s Computer Science program includes AI specializations, and Algonquin College offers applied courses in AI development and data analytics.
+High school students should aim to excel in advanced math courses like Calculus and Vectors, and science subjects such as Physics, to build analytical skills and develop the necessary logical and problem-solving mindset. Participation in computer science courses, possibly even additional technology courses, and extracurricular programming clubs could also help develop problem-solving abilities and technical expertise necessary in this field. A focus on programming languages such as Python, Java, and C++, alongside foundational knowledge in data structures, algorithms, and introductory machine learning frameworks, is critical. Additionally, students should stay updated on AI advancements and ethical considerations to understand this complex new field better. With this path, students will be on track to become AI engineers and enter this booming industry.
+          </p>
+          <br>
+          <p>
+            The following <a href="https://www.youtube.com/watch?v=h2FDq3agImI" target="_blank" style="color: #30d0db;">video</a> demonstrates a complete path on becoming an AI engineer from an experienced AI developer
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section class="ai-section">
+      <div class="content">
+        <div class="content-text">
+          <h2>My Personal Development of Essential Skills and Work Habits</h2>
+          <p>
+           My journey as a prospective AI developer aligns with the skills and work habits outlined in the Ontario Skills Passport. Personally, acquiring these skills began when I participated in over ten programming competitions, securing two victories in the past few years. Through these competitions, I have honed critical thinking, collaboration, and time management skills. These experiences developed my resilience and the ability to perform under pressure, qualities essential for success in AI development.
+My extensive exposure to programming languages, including Python, JavaScript, and C++, has equipped me with the technical proficiency required in this field and the ability to understand the overall layout of programming languages. Through various school projects, I have gained hands-on experience in training AI models, understanding neural networks, and leveraging AI for real-world problem-solving. My deep interest in how technologies operate has driven me to explore the inner workings of algorithms and systems, further strengthening my expertise.
+Additionally, taking advanced mathematics and science courses has developed the analytical and logical reasoning skills necessary for my career in AI. These academic pursuits, combined with my practical experiences, have prepared me to excel as an AI developer, allowing me to continue down the scholarly pathway of becoming an AI engineer.
+
+          </p>
+        </div>
+        <img src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/AI%2BEngineer%2BCareer%2BOpportunities%2B2.webp?v=1738180071816" alt="Future of AI" />
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section class="space-section" id="startSpace">
+      <div class="stars-container"></div>
+      <div class="content reverse">
+        <img
+          src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/0x0.webp?v=1737078878333"
+          alt="Applications of Space Exploration"
+        />
+        <div class="content-text">
+          <h2>The Rise of Aerospace Engineering</h2>
+          <p>
+           Aerospace engineering is rapidly gaining popularity as advancements in space exploration and aviation technology continue their accelerated development. The renewed "space race" among nations and private companies has fueled significant investments in this field, driving innovation and economic growth. Countries like the U.S., China, and India compete to develop space exploration technologies, while private enterprises such as SpaceX and Blue Origin push boundaries with reusable rockets and ambitious missions to Mars. SpaceX’s Starship, for example, aims to revolutionize interplanetary travel, while NASA’s Artemis program targets a sustainable presence on the Moon. Economically, aerospace engineering generates thousands of high-paying jobs, supports related industries like manufacturing and materials science, and inspires scien
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section class="space-section">
+      <div class="stars-container"></div>
+      <div class="content">
+        <div class="content-text">
+          <h2>Academic Pathway for Aspiring Aerospace Engineers</h2>
+          <p>
+           In Ottawa, students interested in aerospace engineering have excellent options for pursuing postsecondary education. Carleton University is one of the best institutions in the country in this field, offering a Bachelor of Aerospace Engineering program that provides specialized training in aerodynamics, propulsion systems, and spacecraft design. The University of Ottawa also offers engineering programs with options to focus on mechanical or electrical systems relevant to aerospace applications.
+High school students should aim to excel in mathematics and science courses, such as Calculus and Vectors, Physics, and Chemistry, as these subjects form the foundation for engineering principles. Participating in extracurricular activities like robotics clubs, physics competitions, or design challenges can further develop critical problem-solving and teamwork skills. Additionally, hands-on projects, such as building model rockets or drones, can improve students' understanding of the underlying hardware in these complex systems.
+To prepare for success, students should also focus on developing programming skills, as software and simulations are integral to modern aerospace design. Learning languages like MATLAB, Python, or C++ is highly recommended. Staying informed about advancements in aerospace technology and current industry challenges, such as sustainability in space travel, will ensure students remain informed in this rapidly changing field.
+          </p>
+        </div>
+        <img
+          src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/il_fullxfull.3246889999_j7ic%20(1).png?v=1737078505009"
+          alt="Jobs in Space Exploration"
+        />
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <section class="space-section">
+      <div class="stars-container"></div>
+      <div class="content reverse">
+        <img
+          src="https://cdn.glitch.global/be615b03-c411-4c5e-ba63-b8be62d9b85f/Atlantis_Pearlman4X3.webp?v=1737077550247"
+          alt="Future of Space Exploration"
+        />
+        <div class="content-text">
+          <h2>Personal Development of Essential Skills and Work Habits</h2>
+          <p>
+            My development of essential skills and work habits aligns well with the demands of aerospace engineering. As a member of my school’s math and physics clubs, I have developed analytical thinking and collaborative problem-solving skills. Participating in math and physics competitions has strengthened my ability to tackle complex challenges under pressure, and contributing to scientific papers on theoretical physics alongside classmates has provided valuable experience in research and technical communication.
+My programming expertise, combined with hands-on experience in various STEM projects, has prepared me for the technical rigor of aerospace engineering. These experiences have also sharpened my time management and organizational skills, ensuring I can effectively manage multidisciplinary tasks.
+Together, my academic achievements and extracurricular involvement have built a strong foundation for success in aerospace engineering, positioning me to pursue this exciting and rapidly evolving field academically.
+
+          </p>
+
+          <br />
+          <p>
+            In the following simulation, users can examine a 3d model of the <a href="https://en.wikipedia.org/wiki/Space_Shuttle_Atlantis" target="_blank" style="color: #30d0db;">atlantis space shuttle</a>, and click on the yellow boxes to examine what working on certain parts could entail. 
+          </p>
+          <br>
+          <a href="rocketdemo.html" target="_blank">
+            <button class="btn">Space Jobs WebVR Simulation</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.querySelectorAll(".stars-container").forEach((container) => {
+        const starsCount = 200;
+
+        for (let i = 0; i < starsCount; i++) {
+          const star = document.createElement("div");
+          star.classList.add("star");
+          star.style.top = `${Math.random() * 100}%`;
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.animationDelay = `${Math.random() * 5}s`;
+          container.appendChild(star);
+        }
+      });
+    </script>
+  </body>
+</html>
